@@ -4,4 +4,14 @@
 
 ## Theory Assignment: `Chapter - 06 Exploring the world` (14/01/2023)
 
-###  1.
+###  1. What is a Microservice?
+
+### 2. What is  Monolith architecture?
+
+What is the difference between Monolith and Microservice?
+
+Why do we need a useEffect Hook?
+
+What is Optional Chaining?
+
+What is Shimmer UI?

@@ -5,3 +5,10 @@
 
 ### Build a Food Ordering App 
 
+In this chapter, we are going to implement teh following features :
+
+1. make use of useEffect() React Hook to fetch live data from Public Restaurant API
+2. Modify the functionality to search functionality
+3. Build a Shimmer Component to display page loader before the data is fetched and restaurant cards are rendered
+4. Use a login/logout button to toggle the user to logout or login. 
+
