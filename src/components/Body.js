@@ -34,11 +34,13 @@ const Body = () => {
     if(searchText !== '') {
       const data = filterData(searchText,restaurants);
       setFilteredRestaurants(data); 
+      setErrorMsg('');
     if (data.length === 0) {
       setErrorMsg('No matches found ');
     }
   } else {
       if(errorMsg) setErrorMsg('');
+      console.log(allRestaurants);
       setAllRestaurants(allRestaurants);
     }
   }

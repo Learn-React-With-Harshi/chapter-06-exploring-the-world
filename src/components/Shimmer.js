@@ -15,7 +15,6 @@ const Shimmer = () => {
   return (
     <div className="shimmer-container">
       {Array.from({length:SHIMMER_RES_CARDS_COUNT}).map((element, index) => {
-        debugger;
         return <CardShimmer key ={index} />
       }) }
     </div>   
