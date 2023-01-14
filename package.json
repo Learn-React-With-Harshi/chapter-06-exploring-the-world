@@ -1,5 +1,5 @@
 {
-  "name": "chapter-05-lets-get-hooked",
+  "name": "chapter-06-exploring-the-world",
   "version": "1.0.0",
   "description": "Documenting my learning journey of [Namaste React Live Course](https://learn.namastedev.com/) conducted by Akshay Saini",
   "scripts": {
@@ -14,9 +14,9 @@
   "author": "Harshitha SV",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Learn-React-With-Harshi/chapter-05-lets-get-hooked/issues"
+    "url": "https://github.com/Learn-React-With-Harshi/chapter-06-exploring-the-world/issues"
   },
-  "homepage": "https://github.com/Learn-React-With-Harshi/chapter-05-lets-get-hooked#readme",
+  "homepage": "https://github.com/Learn-React-With-Harshi/chapter-06-exploring-the-world#readme",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
