@@ -97,13 +97,96 @@ Having said that, we can't put any js code inside {} in jsx of React. Only `js e
 ### 8. What is Conditional Rendering, explain with a code example
 Your components will often need to display different things depending on different conditions. In React, you can `conditionally render` JSX using JavaScript syntax like `if statements`, `&&`, and `? :` operators.
 
-- `if statements`
+We will understand all types of conditional rendering using an example from our code. I have used a error-container to display the `error message` if the errorMsg state is true, else error-container is not displayed. 
 
-- `&&` operator 
 
-- `? :` operator
+- `if statements` : With if statement, the above example goes like 
+
+{ if(errorMsg) {
+    (<div className="error-container" id="error">
+      <span className="error-msg" id="error-msg">{errorMsg}</span>
+    </div> )
+  } 
+}
+
+- `&&` operator : if the condition is true, display the right-side code else display nothing.
+
+{ errorMsg && 
+  <div className="error-container" id="error">
+    <span className="error-msg" id="error-msg">{errorMsg}</span>
+  </div> 
+}
+
+- `? :` operator - If allRestaurants is empty, then showrender Shimmer Component else render RestaurantCard Components 
+
+{ allRestaurants?.length === 0 ? (<Shimmer />) : 
+    <div className="restaurant-container">
+      {filteredRestaurants.map((restaurant) => {
+        return <RestaurantCard {...restaurant.data} key={restaurant.data.id} />;
+      })}
+    </div>
+    }
+
+
 ### 9. What is CORS?
+
+ CORS stands for Cross-Origin Resource Sharing. In current microservices-based server and client communication, where the services are deployed in different servers, machines, different port numbers, it's very important to share resources between them. 
+ 
+ CORS is a HTTP - header based mechanism that allows server to indicate any cross origin (origin different from server's origin like scheme, port or domain) from which browser should allow loading resources. 
+
+ `How CORS is done ?` Browser first sends a `preflight` request (header tha tcontains HTTP method and headers in the actual request) to the server sharing cross-origin resource to check if the server will permit the actual request. 
+
+  Example : 
+
+  http://localhost:1234 ----> https://www.swiggy.com/mapi/restaurants/list 
+ 
+  Fetch API follow `same-origin` policy which means that a web app using fetch API can only request resources in the same origin, unless the response from other origins includes the right headers ( the server still must opt-in using Access-Control-Allow-Origin to share the response with the script.)
+
+  - Simple requests do not need to send a preflight request before sending actual request. 
+
+  - Unlike simple requests, for "preflighted" requests the browser first sends an HTTP request using the `OPTIONS` method to the resource on the other origin, in order to determine if the actual request is safe to send. Such cross-origin requests are preflighted since they may have implications for user data.
+
 
 ### 10. What is async and await? 
 
+Async/await are keywords to make a normal function behave like a asynchornous funtion. 
+
+`async` function always returns a promise, any values are automatically wrapped inside a resolved promise. 
+
+`await` keyword makes javascript wait until the promise settles, and return its result. await cannot be used in a non-async function.  
+
+
+For example : Let's try to write a function getRestaurants() to fetch restaurant data from a public API. 
+
+First, let's try to write it with `Promise chaining` : fetch(url) returns a promise (resolve or reject), which can be consumed by the `then` (success) handler or `catch` (error) handler 
+
+```
+function getRestaurants() {
+  fetch(url).then((data)=>{data.json()})
+    .then((json)=>{
+    console.log(json); 
+  }).catch((err)=>{
+    console.log(err);
+  })
+}
+```
+
+
+Using `async` and `await` : await waits until fetch(url) returns a promise with the data and headers which again needs to be resolved using .json() method to get the data. If any of promise inside try block is rejected, the control jumps to catch block.
+
+```
+async function getRestaurants() {
+  try {
+    const data = await fetch(url);
+    const json = await data.json();
+    console.log(json);
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+```
+
 ### 11. What is the use of `const json = await data.json();` in  getRestaurants()
+
+In seen in the above example, the fetch API call returns a promise response with header, in order to get the data in json format, we have to resolve that promise using `data.json()`
